@@ -2,7 +2,7 @@
 set -ue
 
 NAME="vpalazzo/pacaur"
-FROM_NAME="vpalazzo/archlinux:2016.11.01"
+FROM_NAME="vpalazzo/archlinux:2017.02.01"
 # FROM_NAME="greyltc/archlinux"
 OUTDIR="./pkgs"
 
@@ -13,13 +13,12 @@ if [ "$#" -eq 0 ]; then
     exec /bin/bash -l
 else
     . /etc/profile
-    set -ue
-    pacaur --noconfirm --noedit --rebuild --foreign --makepkg "$@"
+    EDITOR=/usr/bin/true \
+    pacaur --noconfirm --noedit --rebuild --foreign --makepkg "$@" &&\
     sudo find ~/.cache/pacaur -mindepth 2 -maxdepth 2 -type f \
          -iname "*.pkg.tar.xz" -exec sh -c '"'"'
-set -ue
-cp "$1" "$2"/pkgs/
-chown "$3":"$4" "$2"/pkgs/"$(basename "$1")"
+                cp "$1" "$2"/pkgs/ &&\
+                chown "$3":"$4" "$2"/pkgs/"$(basename "$1")"
     '"'"' - {} "$HOME" "${DOCKER_CLIENT_USER}" "${DOCKER_CLIENT_GROUP}" \;
 fi
 '
