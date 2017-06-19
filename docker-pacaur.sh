@@ -2,7 +2,7 @@
 set -ue
 
 NAME="vpalazzo/pacaur"
-FROM_NAME="vpalazzo/archlinux:2017.03.01"
+FROM_NAME="vpalazzo/archlinux:2017.05.01"
 # FROM_NAME="greyltc/archlinux"
 OUTDIR="./pkgs"
 
@@ -41,8 +41,7 @@ USER user
 
 RUN \
     . /etc/profile &&\
-    gpg --keyserver hkp://pool.sks-keyservers.net \
-        --recv-keys 487EACC08557AD082088DABA1EB2638FF56C0C53 &&\
+    gpg --recv-keys --keyserver hkp://pgp.mit.edu 1EB2638FF56C0C53 &&\
     mkdir /tmp/pacaur_install &&\
     cd /tmp/pacaur_install &&\
     for aur in cower pacaur; do \
