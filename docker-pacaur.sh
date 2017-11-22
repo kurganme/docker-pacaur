@@ -13,6 +13,7 @@ if [ "$#" -eq 0 ]; then
     exec /bin/bash -l
 else
     . /etc/profile
+    sudo pacman --noconfirm -Suy &&\
     EDITOR=/usr/bin/true \
     pacaur --noconfirm --noedit --rebuild --foreign --makepkg "$@" &&\
     sudo find ~/.cache/pacaur -mindepth 2 -maxdepth 2 -type f \
