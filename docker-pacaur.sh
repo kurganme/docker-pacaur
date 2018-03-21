@@ -2,7 +2,7 @@
 set -ue
 
 NAME="vpalazzo/pacaur"
-FROM_NAME="vpalazzo/archlinux:2018.01.01"
+FROM_NAME="vpalazzo/archlinux:2018.03.01"
 # FROM_NAME="greyltc/archlinux"
 OUTDIR="./pkgs"
 
