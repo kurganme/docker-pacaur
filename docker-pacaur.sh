@@ -2,7 +2,7 @@
 set -ue
 
 NAME="vpalazzo/pacaur"
-FROM_NAME="vpalazzo/archlinux:2018.03.01"
+FROM_NAME="vpalazzo/archlinux:2018.05.01"
 # FROM_NAME="greyltc/archlinux"
 OUTDIR="./pkgs"
 
@@ -27,7 +27,9 @@ fi
 DOCKERFILE='
 FROM '"$FROM_NAME"'
 
-RUN pacman --noconfirm --needed -S --refresh --sysupgrade \
+RUN \
+    pacman --noconfirm --needed --sync --refresh sed &&\
+    pacman --noconfirm --needed --sync --refresh --sysupgrade \
            expac yajl git base-devel perl
 
 RUN \
