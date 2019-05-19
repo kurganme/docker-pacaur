@@ -47,7 +47,7 @@ RUN \
     gpg --recv-keys --keyserver hkp://pgp.mit.edu 1EB2638FF56C0C53 &&\
     mkdir /tmp/pacaur_install &&\
     cd /tmp/pacaur_install &&\
-    for aur in cower pacaur; do \
+    for aur in cower auracle-git pacaur; do \
         git clone https://aur.archlinux.org/"$aur".git &&\
         cd "$aur" &&\
         makepkg --syncdeps --install --noconfirm &&\
