@@ -2,8 +2,8 @@
 set -ue
 
 NAME="vpalazzo/pacaur"
-FROM_NAME="vpalazzo/archlinux:2018.05.01"
-# FROM_NAME="greyltc/archlinux"
+# FROM_NAME="vpalazzo/archlinux:2019.02.01"
+FROM_NAME="archlinux/base"
 OUTDIR="./pkgs"
 
 ENTRYPOINT='#!/bin/sh
